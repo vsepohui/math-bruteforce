@@ -48,7 +48,7 @@ sub process {
 
 sub pod_rotate {
 	my ($x, $a) = @_;
-	for (1..108) {
+	for (1..49000) {
 		if (my $r = rotate($x / $_, $a)) { say "pod rotate x(1) $_"; return $r;}
 		if (my $r = rotate($x, $a / $_)) { say "pod rotate a(2) $_"; return $r;}
 	}
@@ -58,7 +58,7 @@ sub pod_rotate {
 sub rotate {
 	my ($x, $a) = @_;
 	my $t = 1;
-	for(1..7) {
+	for(1..49000) {
 		$t = abs ($t - $a);
 		#say $t;
 		if (abs($t - $x) < 0.000001) {
