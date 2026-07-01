@@ -15,11 +15,14 @@ use warnings;
 #my $a = 0.69314718056;
 
 my @data;
+my %com;
 
 open my $fi, 'input.txt';
 while (my $s = <$fi>) {
 	chomp $s;
-	push @data, $s;
+	my ($x, $c) = split /\s+\#/, $s;
+	push @data, $x;
+	$com{$x} = $c;
 }
 close $fi;
 
@@ -34,13 +37,13 @@ for my $a (@data) {
 sub process {
 	my ($x, $a) = @_;
 	if (my $r = pod_rotate($x, $a)) { say "WOW: $r = $x, $a" };
-	if (my $r = pod_rotate($x*$x, $a)) { say "WOW: rotate(\$x*\$x, \$a) $r = $x, $a" };
-	if (my $r = pod_rotate(sqrt($x), $a)) { say "WOW: rotate(sqrt(\$x), $a) $r = $x, $a" };
-	if (my $r = pod_rotate($x, $a*$a)) { say "WOW:rotate(\$x, \$a*\$a)  $r = $x, $a" };
-	if (my $r = pod_rotate($x, sqrt($a))) { say "WOW rotate(\$x, sqrt(\$a)): $r = $x, $a" };
+	if (my $r = pod_rotate($x*$x, $a)) { say "WOW: rotate(\$x*\$x, \$a) $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate(sqrt($x), $a)) { say "WOW: rotate(sqrt(\$x), $a) $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate($x, $a*$a)) { say "WOW:rotate(\$x, \$a*\$a)  $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate($x, sqrt($a))) { say "WOW rotate(\$x, sqrt(\$a)): $r = $com{$x}, $com{$a}" };
 
-	if (my $r = pod_rotate(abs ($x-$a), $a)) { say "WOW rotate(abs (\$x-\$a), $a): $r = $x, $a" };
-	if (my $r = pod_rotate($x, abs($x-$a))) { say "WOW: rotate(\$x, abs(\$x-\$a)) $r = $x, $a" };
+	if (my $r = pod_rotate(abs ($x-$a), $a)) { say "WOW rotate(abs (\$x-\$a), $a): $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate($x, abs($x-$a))) { say "WOW: rotate(\$x, abs(\$x-\$a)) $r = $com{$x}, $com{$a}" };
 }
 
 sub pod_rotate {
