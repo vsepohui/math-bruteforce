@@ -36,19 +36,18 @@ for my $a (@data) {
 
 sub process {
 	my ($x, $a) = @_;
-	if (my $r = pod_rotate($x, $a)) { say "WOW: $r = $x, $a" };
+	if (my $r = pod_rotate($x, $a)) { say "WOW: rotate(\$x, \$a) $r = $com{$x}, $com{$a}" };
 	if (my $r = pod_rotate($x*$x, $a)) { say "WOW: rotate(\$x*\$x, \$a) $r = $com{$x}, $com{$a}" };
-	if (my $r = pod_rotate(sqrt($x), $a)) { say "WOW: rotate(sqrt(\$x), $a) $r = $com{$x}, $com{$a}" };
-	if (my $r = pod_rotate($x, $a*$a)) { say "WOW:rotate(\$x, \$a*\$a)  $r = $com{$x}, $com{$a}" };
-	if (my $r = pod_rotate($x, sqrt($a))) { say "WOW rotate(\$x, sqrt(\$a)): $r = $com{$x}, $com{$a}" };
-
-	if (my $r = pod_rotate(abs ($x-$a), $a)) { say "WOW rotate(abs (\$x-\$a), $a): $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate(sqrt($x), $a)) { say "WOW: rotate(sqrt(\$x), \$a) $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate($x, $a*$a)) { say "WOW: rotate(\$x, \$a*\$a)  $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate($x, sqrt($a))) { say "WOW: rotate(\$x, sqrt(\$a)) $r = $com{$x}, $com{$a}" };
+	if (my $r = pod_rotate(abs ($x-$a), $a)) { say "WOW: rotate(abs(\$x-\$a), \$a) $r = $com{$x}, $com{$a}" };
 	if (my $r = pod_rotate($x, abs($x-$a))) { say "WOW: rotate(\$x, abs(\$x-\$a)) $r = $com{$x}, $com{$a}" };
 }
 
 sub pod_rotate {
 	my ($x, $a) = @_;
-	for (1..49000) {
+	for (1..108) {
 		if (my $r = rotate($x / $_, $a)) { say "pod rotate x(1) $_"; return $r;}
 		if (my $r = rotate($x, $a / $_)) { say "pod rotate a(2) $_"; return $r;}
 	}
@@ -58,7 +57,7 @@ sub pod_rotate {
 sub rotate {
 	my ($x, $a) = @_;
 	my $t = 1;
-	for(1..49000) {
+	for(1..108) {
 		$t = abs ($t - $a);
 		#say $t;
 		if (abs($t - $x) < 0.000001) {
@@ -73,3 +72,5 @@ sub rotate {
 
 
 1;
+
+

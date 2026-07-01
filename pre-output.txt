@@ -1,0 +1,24 @@
+tmp = 8 0.00885999558140625 0.12610746335
+pod rotate x(1) 64
+WOW: rotate($x, abs($x-$a)) 8 =  (sin(180/7)^4)*16,  ln (2)
+tmp = 3 0.00784229368033163 0.33071891388
+pod rotate x(1) 41
+WOW: rotate($x*$x, $a) 3 =  (sin(180/7)^4)*16,  sqrt(7)/8
+tmp = 3 0.00784396246122449 0.33071891388
+pod rotate x(1) 96
+WOW: rotate(sqrt($x), $a) 3 =  (sin(180/7)^4)*16,  sqrt(7)/8
+tmp = 90 0.69314718056 0.00340947333896907
+pod rotate a(2) 97
+WOW: rotate($x, $a) 90 =  ln (2),  sqrt(7)/8
+tmp = 67 0.611260466965601 0.00580208620842105
+pod rotate a(2) 57
+WOW: rotate($x*$x, $a) 67 =  sin(360/7),  sqrt(7)/8
+tmp = 25 0.0142550243357692 0.040570217
+pod rotate x(1) 52
+WOW: rotate(abs($x-$a), $a) 25 =  sin(360/7),  (pi() / 7)^4
+tmp = 2 0.22252093395 0.611260466965601
+pod rotate x(1) 1
+WOW: rotate($x, $a*$a)  2 =  sin(90/7),  sin(360/7)
+tmp = 12 0.44879895051 0.045933434413371
+pod rotate a(2) 7
+WOW: rotate($x, $a*$a)  12 =  pi() / 7,  (sin(180/7)^4)*16
