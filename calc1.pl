@@ -36,11 +36,11 @@ sub process {
 	if (my $r = rotate($x, $a)) { say "WOW: $r = $x, $a" };
 	if (my $r = rotate($x*$x, $a)) { say "WOW: rotate(\$x*\$x, \$a) $r = $x, $a" };
 	if (my $r = rotate(sqrt($x), $a)) { say "WOW: rotate(sqrt(\$x), $a) $r = $x, $a" };
-	if (my $r = rotate($x, $a*$a)) { say "WOW: $r = $x, $a" };
-	if (my $r = rotate($x, sqrt($a))) { say "WOW: $r = $x, $a" };
+	if (my $r = rotate($x, $a*$a)) { say "WOW:rotate(\$x, \$a*\$a)  $r = $x, $a" };
+	if (my $r = rotate($x, sqrt($a))) { say "WOW rotate(\$x, sqrt(\$a)): $r = $x, $a" };
 
-	if (my $r = rotate(abs ($x-$a), $a)) { say "WOW: $r = $x, $a" };
-	if (my $r = rotate($x, abs($x-$a))) { say "WOW: $r = $x, $a" };
+	if (my $r = rotate(abs ($x-$a), $a)) { say "WOW rotate(abs (\$x-\$a), $a): $r = $x, $a" };
+	if (my $r = rotate($x, abs($x-$a))) { say "WOW: rotate(\$x, abs(\$x-\$a)) $r = $x, $a" };
 }
 
 
