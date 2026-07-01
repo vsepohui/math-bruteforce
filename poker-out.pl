@@ -25,7 +25,7 @@ close $fi;
 
 for (@data) {
 	my @a = @$_;
-	warn $a[2];
+	say $a[2];
 	my ($x, $y, $d, $f1, $f2) = $a[2] =~ /rotate\((.*), (.*)\)\s+(\d+)\s+\=\s*(.*),\s*(.*)/;
 	
 	my ($u, $s) = $a[1] =~ /rotate \w\((.+)\)\s+(\d+)/;
