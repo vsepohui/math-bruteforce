@@ -1,0 +1,66 @@
+#!/usr/bin/perl
+
+use 5.022;
+use warnings;
+
+# 0.33071891388
+
+# sqrt(7)/8=
+# my $x = 0.33071891388; 
+
+# (sin(180/7)^4)*16=
+#my $x = 0.56703971721;
+
+# ln(2)=
+#my $a = 0.69314718056;
+
+my @data;
+
+open my $fi, 'input.txt';
+while (my $s = <$fi>) {
+	chomp $s;
+	push @data, $s;
+}
+close $fi;
+
+for my $a (@data) {
+	for my $x (@data) {
+		if ($a != $x) {
+			process ($a, $x);
+		}
+	}
+}
+
+sub process {
+	my ($x, $a) = @_;
+	if (my $r = rotate($x, $a)) { say "WOW: $r = $x, $y" };
+	if (my $r = rotate($x*$x, $a)) { say "WOW: $r = $x, $y" };
+	if (my $r = rotate(sqrt($x), $a)) { say "WOW: $r = $x, $y" };
+	if (my $r = rotate($x, $a*$a)) { say "WOW: $r = $x, $y" };
+	if (my $r = rotate($x, sqrt($a))) { say "WOW: $r = $x, $y" };
+
+	if (my $r = rotate(abs ($x-$a), $a)) { say "WOW: $r = $x, $y" };
+	if (my $r = rotate($x, abs($x-$a))) { say "WOW: $r = $x, $y" };
+}
+
+
+
+
+sub rotate {
+	my ($x, $a) = @_;
+	my $t = 1;
+	for(1..7) {
+		$t = abs ($t - $a);
+		#say $t;
+		if (abs($t - $x) < 0.000001) {
+			say "tmp = " . $_ . " $x $a";
+			return $_;
+		}
+	}
+	return;
+}
+
+
+
+
+1;
